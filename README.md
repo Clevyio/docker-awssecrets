@@ -1,6 +1,6 @@
 # Docker AWS Secrets
 
-Thin docker wrapper around AWS Secrets Manager. Will simply output the requested secrets to console.  
+[Thin docker wrapper](https://hub.docker.com/r/clevy/awssecrets) around [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/?nc1=h_ls). Will simply output the requested secrets to console.  
 Useful for loading secrets in a env file or exporting in the environment, for example in CI stages.
 
 This will try to retrieve permission from its environment, so either a resource role or user credentials with `secretsmanager:GetSecretValue` permissions are required.

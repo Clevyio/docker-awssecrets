@@ -1,11 +1,22 @@
 const AWS = require("aws-sdk");
 const argv = require("minimist")(process.argv.slice(2));
 
-const { secret, region = "eu-west-1" } = argv;
+const {
+  secret,
+  region = "eu-west-1",
+  AWS_ACCESS_KEY_ID: accessKeyId,
+  AWS_SECRET_ACCESS_KEY: secretAccessKey,
+} = argv;
 
 const SecretId = secret;
 
-const client = new AWS.SecretsManager({ region });
+const params = { region };
+if (accessKeyId) Object.assign(params, { accessKeyId });
+if (secretAccessKey) Object.assign(params, { secretAccessKey });
+
+console.log(params)
+
+const client = new AWS.SecretsManager(params);
 
 if (!secret) {
   console.log("Missing SECRET_NAME or SECRET_ARN");

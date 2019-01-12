@@ -64,6 +64,11 @@ VERY_VERY_SECRET=poepoe
 ### Arguments
 
 ```
+mandatory:
 --region (default: `eu-west-1`): region in which the secret is stored
 --secret (default: none): name or ARN of secret to retrieve
+
+optional:
+--AWS_ACCESS_KEY_ID (default: from environment)
+--AWS_SECRET_ACCESS_KEY (default: from environment)
 ```

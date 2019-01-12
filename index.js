@@ -14,8 +14,6 @@ const params = { region };
 if (accessKeyId) Object.assign(params, { accessKeyId });
 if (secretAccessKey) Object.assign(params, { secretAccessKey });
 
-console.log(params)
-
 const client = new AWS.SecretsManager(params);
 
 if (!secret) {

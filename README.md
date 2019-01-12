@@ -5,6 +5,9 @@ Useful for loading secrets in a env file or exporting in the environment, for ex
 
 This will try to retrieve permission from its environment, so either a resource role or user credentials with `secretsmanager:GetSecretValue` permissions are required.
 
+- Sources on Github: https://github.com/Clevyio/docker-awssecrets
+- Blog post on Medium: https://medium.com/clevyio/managing-secrets-in-ci-stages-with-aws-secrets-manager-7240938ddf41
+
 ## Example: Gitlab CI
 
 This project was made to help centralize secrets management within a gitlab instance across multiple projects. For example, we need to publish private npm packages from multiple repositories. This makes storing and managing npm tokens very complex, and introduces the security risk of not rotating the token often enough (when an employee leaves, or if our CI token gets leaked somehow), or of course to break builds if we revoke a token and forget to update it in one of our repositories.
@@ -20,9 +23,7 @@ stages:
 
 secrets:
   stage: secrets
-  image:
-    name: clevy/awssecrets
-    entrypoint: [""]
+  image: clevy/awssecrets
   script:
     - awssecrets --region eu-west-1 --secret my-secrets > .ci-secrets
   artifacts:

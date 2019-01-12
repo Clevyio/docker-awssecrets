@@ -4,4 +4,4 @@ WORKDIR /usr/bin/ci-secrets
 COPY . .
 RUN npm install -g .
 
-ENTRYPOINT ["awssecrets"]
+CMD ["awssecrets"]

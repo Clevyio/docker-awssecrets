@@ -23,8 +23,6 @@ secrets:
   image:
     name: clevy/awssecrets
     entrypoint: [""]
-  services:
-    - docker:dind
   script:
     - awssecrets --region eu-west-1 --secret my-secrets > .ci-secrets
   artifacts:

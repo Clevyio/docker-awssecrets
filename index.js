@@ -17,13 +17,13 @@ if (secretAccessKey) Object.assign(params, { secretAccessKey });
 const client = new AWS.SecretsManager(params);
 
 if (!secret) {
-  console.log("Missing SECRET_NAME or SECRET_ARN");
+  console.error("Missing SECRET_NAME or SECRET_ARN");
   process.exit(1);
 }
 
 client.getSecretValue({ SecretId }, (err, data) => {
   if (err) {
-    console.log(`${err.name}: ${err.message}`);
+    console.error(`${err.name}: ${err.message}`);
     process.exit(1);
   }
 
@@ -32,17 +32,17 @@ client.getSecretValue({ SecretId }, (err, data) => {
       const secrets = JSON.parse(data.SecretString);
       const keys = Object.keys(secrets);
       keys.forEach(k => {
-        console.log(`${k}=${secrets[k]}`);
+        console.error(`${k}=${secrets[k]}`);
       });
     }
     catch (e) {
-      console.log(data.SecretString);
+      console.error(data.SecretString);
     }
   }
 
   // secret is a binary
   else {
     let buff = new Buffer(data.SecretBinary, "base64");
-    console.log(buff.toString("ascii"));
+    console.error(buff.toString("ascii"));
   }
 });

@@ -32,7 +32,7 @@ client.getSecretValue({ SecretId }, (err, data) => {
       const secrets = JSON.parse(data.SecretString);
       const keys = Object.keys(secrets);
       keys.forEach(k => {
-        console.error(`${k}=${secrets[k]}`);
+        console.log(`${k}=${secrets[k]}`);
       });
     }
     catch (e) {
@@ -43,6 +43,6 @@ client.getSecretValue({ SecretId }, (err, data) => {
   // secret is a binary
   else {
     let buff = new Buffer(data.SecretBinary, "base64");
-    console.error(buff.toString("ascii"));
+    console.log(buff.toString("ascii"));
   }
 });

@@ -8,7 +8,7 @@
   },
   "preferGlobal": true,
   "dependencies": {
-    "aws-sdk": "^2.387.0",
+    "aws-sdk": "^2.814.0",
     "minimist": "^1.2.3"
   },
   "devDependencies": {},
